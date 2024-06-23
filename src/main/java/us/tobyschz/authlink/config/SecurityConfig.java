@@ -45,19 +45,10 @@ public class SecurityConfig {
                     response.sendError(HttpServletResponse.SC_UNAUTHORIZED, exception.getMessage());
                 }));
         http.authorizeHttpRequests(authorizeHttpRequest -> authorizeHttpRequest
-                .requestMatchers("/hello").permitAll()
+                .requestMatchers("/shorten*").permitAll()
                 .anyRequest().authenticated()
         );
         /*
-        if (yamlConfig.getPublicApiList().size() > 0) {
-            http.authorizeHttpRequests(authorizeHttpRequest -> authorizeHttpRequest
-                    .requestMatchers(String.join(", ", yamlConfig.getPublicApiList())).permitAll()
-                    .anyRequest().authenticated()
-            );
-            LOGGER.info("Added public API: '{}' ", String.join("', '", yamlConfig.getPublicApiList()));
-
-
-        }
        // http.addFilterBefore(new SecurityFilter(), UsernamePasswordAuthenticationFilter.class); // custom protocol Authorization
          */
         return http.build();

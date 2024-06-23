@@ -1,6 +1,6 @@
 package us.tobyschz.authlink.common;
 
-//credit to zeeshaanahmad for shortening function
+//credit to zeeshaanahmad for functions
 public class ShortenerUtil {
     private ShortenerUtil() { //utils should never be init
 
