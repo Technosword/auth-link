@@ -44,10 +44,14 @@ public class SecurityConfig {
                 (request, response, exception) -> {
                     response.sendError(HttpServletResponse.SC_UNAUTHORIZED, exception.getMessage());
                 }));
-        http.authorizeHttpRequests(authorizeHttpRequest -> authorizeHttpRequest
-                .requestMatchers("/shorten*").permitAll()
+        /*http.authorizeHttpRequests(authorizeHttpRequest -> authorizeHttpRequest
+                .requestMatchers("/shorten**").permitAll()
                 .anyRequest().authenticated()
         );
+         */
+        http.authorizeHttpRequests(authorizationManagerRequestMatcherRegistry -> authorizationManagerRequestMatcherRegistry
+                .requestMatchers("/shorten/**").permitAll()
+                .anyRequest().fullyAuthenticated());
         /*
        // http.addFilterBefore(new SecurityFilter(), UsernamePasswordAuthenticationFilter.class); // custom protocol Authorization
          */

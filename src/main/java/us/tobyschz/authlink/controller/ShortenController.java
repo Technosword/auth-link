@@ -2,6 +2,7 @@ package us.tobyschz.authlink.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import us.tobyschz.authlink.model.URLEntity;
@@ -19,10 +20,9 @@ public class ShortenController {
 
     @PostMapping("/create")
     //@PreAuthorize("hasRole('USER')")
-    @ResponseBody
-    public String createShortenURL(@RequestBody URLEntity urlEntity) { //todo: implement JWT and service
-
-        return "shortened";
+    public ResponseEntity<?> createShortenURL(@RequestBody URLEntity urlEntity) { //todo: implement JWT and service
+        String finalString = urlService.createShortURL(urlEntity.getFullURL(), "someone");
+        return ResponseEntity.ok(finalString);
     }
 
     @DeleteMapping("/delete")
