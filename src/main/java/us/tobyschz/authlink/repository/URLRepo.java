@@ -15,4 +15,6 @@ public interface URLRepo extends CrudRepository<URLEntity, Integer> {
     List<URLEntity> findURLEntitiesByCreator(String creator);
     @Query
     List<URLEntity> findURLEntitiesByFullURL(String fullURL);
+    @Query
+    URLEntity findURLEntityById(Long id);
 }

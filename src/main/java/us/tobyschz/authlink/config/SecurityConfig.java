@@ -50,7 +50,7 @@ public class SecurityConfig {
         );
          */
         http.authorizeHttpRequests(authorizationManagerRequestMatcherRegistry -> authorizationManagerRequestMatcherRegistry
-                .requestMatchers("/shorten/**").permitAll()
+                .requestMatchers("/**").permitAll()
                 .anyRequest().fullyAuthenticated());
         /*
        // http.addFilterBefore(new SecurityFilter(), UsernamePasswordAuthenticationFilter.class); // custom protocol Authorization
