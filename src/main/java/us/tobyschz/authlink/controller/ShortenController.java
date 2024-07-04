@@ -49,6 +49,5 @@ public class ShortenController {
         return ResponseEntity.status(HttpStatus.FOUND)
                 .location(uri)
                 .build();
-
     }
 }
